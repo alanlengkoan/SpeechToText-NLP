@@ -1,0 +1,22 @@
+<h2><%= halaman %></h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Male</th>
+            <th>Famale</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let i = 0; i < list.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= list[i].male %></td>
+                <td><%= list[i].famale %></td>
+                <td><%= list[i].text %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>

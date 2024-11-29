@@ -1,0 +1,27 @@
+<h2><%= halaman %></h2>
+<p>Selamat Datang!</p>
+
+<textarea name="convert_text" id="convert_text"></textarea>
+<button id="click_to_convert">Convert</button>
+
+<script>
+    let textArea = document.getElementById('convert_text');
+    let speakButton = document.getElementById('click_to_convert');
+
+    speakButton.addEventListener('click', () => {
+        var speech = true;
+        window.SpeechRecognition = window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;
+        recognition.lang = 'id-ID';
+
+        recognition.addEventListener('result', (event) => {
+            const transcript = event.results[event.resultIndex][0].transcript;
+            textArea.value = transcript;
+        });
+
+        if (speech) {
+            recognition.start();
+        }
+    });
+</script>
