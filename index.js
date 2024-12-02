@@ -9,6 +9,7 @@ import {
 import {
     voice
 } from "./src/models/voice.js";
+import { log } from "console";
 
 const app = express();
 
@@ -110,10 +111,12 @@ app.post("/webhook", (req, res) => {
         const data = req.body;
         const result = data.queryResult;
 
-        res.status(200).send({
-            message: "Berhasil",
-            text: result.fulfillmentText
-        });
+        console.log(result);
+
+        // res.status(200).send({
+        //     message: "Berhasil",
+        //     text: result.fulfillmentText
+        // });
     } catch (error) {
         res.status(400).send({
             message: "Gagal",
