@@ -2,6 +2,7 @@ import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
 import cors from "cors";
 import path from "path";
+import dialogflow from "dialogflow";
 import {
     fileURLToPath
 } from "url";
@@ -59,4 +60,64 @@ app.get("/voice", async (req, res) => {
     };
 
     res.render('voice', data);
+});
+
+app.post("/detect", async (req, res) => {
+    try {
+        const data = req.body;
+
+        const credentials = JSON.parse(process.env.DIALOGFLOW_CREDENTIALS);
+        const projectId = credentials.project_id;
+        const sessionId = process.env.DIALOGFLOW_SESSION_ID;
+        const languageCode = 'id-ID';
+
+        const config = {
+            credentials: {
+                private_key: credentials.private_key,
+                client_email: credentials.client_email,
+            }
+        };
+
+        const sessionClient = new dialogflow.SessionsClient(config);
+        const sessionPath = sessionClient.sessionPath(projectId, sessionId);
+
+        const request = {
+            session: sessionPath,
+            queryInput: {
+                text: {
+                    text: data.message,
+                    languageCode: languageCode,
+                },
+            },
+        };
+
+        await sessionClient.detectIntent(request);
+
+        res.status(200).send({
+            message: "Berhasil",
+            text: "Pesan Terkirim"
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: "Gagal",
+            text: error.message
+        });
+    }
+});
+
+app.post("/webhook", (req, res) => {
+    try {
+        const data = req.body;
+        const result = data.queryResult;
+
+        res.status(200).send({
+            message: "Berhasil",
+            text: result.fulfillmentText
+        });
+    } catch (error) {
+        res.status(400).send({
+            message: "Gagal",
+            text: error.message
+        });
+    }
 });
