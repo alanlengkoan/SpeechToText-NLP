@@ -7,6 +7,7 @@
             <th>Male</th>
             <th>Female</th>
             <th>Text</th>
+            <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +25,30 @@
                     </audio>
                 </td>
                 <td><%= list[i].text %></td>
+                <td>
+                    <button class="btn btn-primary" id="translate" data-text="<%= list[i].text %>">
+                        Terjamahan
+                    </button>
+                </td>
             </tr>
         <% } %>
     </tbody>
 </table>
+
+<script>
+    $(document).on('click', '#translate', function () {
+        var ini = $(this);
+        var text = ini.data('text');
+
+        $.ajax({
+            url: '/detect',
+            method: 'POST',
+            data: {
+                message: text
+            },
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    });
+</script>

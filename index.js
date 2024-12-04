@@ -9,7 +9,17 @@ import {
 import {
     voice
 } from "./src/models/voice.js";
-import { log } from "console";
+import {
+    addDoc,
+    collection,
+    getDocs,
+    orderBy,
+    query,
+    serverTimestamp
+} from "firebase/firestore";
+import {
+    db
+} from "./src/configs/firebase.js";
 
 const app = express();
 
@@ -65,6 +75,7 @@ app.get("/voice", async (req, res) => {
 
 app.post("/detect", async (req, res) => {
     try {
+        var translate = [];
         const data = req.body;
 
         const credentials = JSON.parse(process.env.DIALOGFLOW_CREDENTIALS);
@@ -94,9 +105,22 @@ app.post("/detect", async (req, res) => {
 
         await sessionClient.detectIntent(request);
 
+        const tblTranslate = collection(db, 'Translate');
+        const qryTranslate = query(tblTranslate, orderBy('created', 'desc'));
+        const docTranslate = await getDocs(qryTranslate);
+
+        docTranslate.forEach((doc) => {
+            translate.push({
+                id: doc.id,
+                ...doc.data()
+            });
+        });
+
         res.status(200).send({
             message: "Berhasil",
-            text: "Pesan Terkirim"
+            text: "Pesan Terkirim",
+            id: translate[0].id,
+            fulfillmentText: translate[0].fulfillmentText
         });
     } catch (error) {
         res.status(400).send({
@@ -106,17 +130,46 @@ app.post("/detect", async (req, res) => {
     }
 });
 
-app.post("/webhook", (req, res) => {
+app.post("/webhook", async (req, res) => {
     try {
         const data = req.body;
         const result = data.queryResult;
 
-        console.log(result);
+        const tblTranslate = collection(db, 'Translate');
+        const qryTranslate = query(tblTranslate);
+        const getTranslate = await getDocs(qryTranslate);
 
-        // res.status(200).send({
-        //     message: "Berhasil",
-        //     text: result.fulfillmentText
-        // });
+        if (getTranslate.empty) {
+            console.log('Collection does not exist');
+
+            const data = {
+                fulfillmentText: result.fulfillmentText,
+                created: serverTimestamp(),
+            }
+
+            addDoc(tblTranslate, data).then((res) => {
+                console.log('Translate berhasil ditambahkan => ' + res.id);
+            });
+
+            res.status(200).send({
+                message: "Berhasil",
+            });
+        } else {
+            console.log('Collection does exist');
+
+            const data = {
+                fulfillmentText: result.fulfillmentText,
+                created: serverTimestamp(),
+            }
+
+            addDoc(tblTranslate, data).then((res) => {
+                console.log('Translate berhasil ditambahkan => ' + res.id);
+            });
+
+            res.status(200).send({
+                message: "Berhasil",
+            });
+        }
     } catch (error) {
         res.status(400).send({
             message: "Gagal",
