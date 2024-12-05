@@ -58,19 +58,28 @@ app.get("/", (req, res) => {
         layout: 'base',
     };
 
-    res.render('home', data);
+    res.render('home/view', data);
 });
 
-app.get("/voice", async (req, res) => {
+app.get("/idtobu", async (req, res) => {
+    var data = {
+        halaman: 'Indonesia To Bugis',
+        layout: 'base',
+    };
+
+    res.render('idtobu/view', data);
+});
+
+app.get("/butoid", async (req, res) => {
     const list = await voice();
 
     var data = {
-        halaman: 'Voice',
+        halaman: 'Bugis To Indonesia',
         layout: 'base',
         list: list
     };
 
-    res.render('voice', data);
+    res.render('butoid/view', data);
 });
 
 app.post("/detect", async (req, res) => {
