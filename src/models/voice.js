@@ -4,12 +4,13 @@ import {
 import {
     collection,
     query,
-    getDocs
+    getDocs,
+    orderBy
 } from "firebase/firestore";
 
 const voice = async () => {
     const tblVoice = collection(db, "Voice");
-    const qryVoice = query(tblVoice);
+    const qryVoice = query(tblVoice, orderBy("created", "asc"));
     const docVoice = await getDocs(qryVoice);
 
     const result = [];

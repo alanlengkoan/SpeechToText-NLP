@@ -2,6 +2,7 @@ import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
 import cors from "cors";
 import path from "path";
+import fs from "fs";
 import dialogflow from "dialogflow";
 import {
     fileURLToPath
@@ -20,6 +21,9 @@ import {
 import {
     db
 } from "./src/configs/firebase.js";
+import {
+    log
+} from "console";
 
 const app = express();
 
@@ -59,6 +63,36 @@ app.get("/", (req, res) => {
     };
 
     res.render('home/view', data);
+});
+
+app.get("/import", (req, res) => {
+    const jsonStringData = fs.readFileSync("./public/dataResource.json");
+    let dataResource = JSON.parse(jsonStringData);
+    let no = 1;
+
+    dataResource.forEach(async (data) => {
+        const count = no++;
+        const tblVoice = collection(db, 'Voice');
+        const qryVoice = query(tblVoice);
+        const getVoice = await getDocs(qryVoice);
+
+        if (getVoice.empty) {
+            const addData = {
+                female: data.female,
+                male: data.male,
+                text: data.text,
+                created: serverTimestamp(),
+            }
+
+            addDoc(tblVoice, addData).then((res) => {
+                console.log('Voice berhasil ditambahkan => ' + res.id + ' No. ' + count);
+            });
+        }
+    });
+
+    res.status(200).send({
+        message: "Berhasil",
+    });
 });
 
 app.get("/idtobu", async (req, res) => {
