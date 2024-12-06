@@ -21,9 +21,7 @@ import {
 import {
     db
 } from "./src/configs/firebase.js";
-import {
-    log
-} from "console";
+import ServerlessHttp from "serverless-http";
 
 const app = express();
 
@@ -49,12 +47,22 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-const port = process.env.PORT || 5000;
-const host = process.env.HOST || 'localhost';
+if (process.env.APP_STAGE === 'dev') {
+    const port = process.env.PORT || 5000;
+    const host = process.env.HOST || 'localhost';
 
-app.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
-});
+    app.listen(port, host, () => {
+        console.log(`Server is running on http://${host}:${port}`);
+    });
+} else {
+    const handler = ServerlessHttp(app);
+
+    module.exports.handler = async (event, context) => {
+        const response = await handler(event, context);
+
+        return response;
+    };
+}
 
 app.get("/", (req, res) => {
     var data = {

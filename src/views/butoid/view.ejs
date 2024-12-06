@@ -49,7 +49,8 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-2">
                                 <label for="terjamahan" class="form-label">Terjamahan</label>
-                                <textarea class="form-control form-control-lg" rows="3" name="terjamahan" id="terjamahan" placeholder="Terjamahan" disabled></textarea>
+                                <textarea class="form-control form-control-lg" rows="3" name="terjamahan"
+                                    id="terjamahan" placeholder="Terjamahan" disabled></textarea>
                             </div>
                         </div>
                     </div>
@@ -74,6 +75,9 @@
             method: 'POST',
             data: {
                 message: text
+            },
+            beforeSend: function () {
+                $('#terjamahan').val('');
             },
             success: function (res) {
                 $('#terjamahan').val(res.fulfillmentText);

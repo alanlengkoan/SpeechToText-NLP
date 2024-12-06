@@ -62,6 +62,9 @@
             data: {
                 message: text
             },
+            beforeSend: function () {
+                $('#terjamahan').val('');
+            },
             success: function (res) {
                 $('#terjamahan').val(res.fulfillmentText);
             }
