@@ -2,11 +2,11 @@
   "name": "speech-to-text",
   "version": "1.0.0",
   "description": "learnn",
-  "main": "index.js",
+  "main": "functions/server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
+    "start": "nodemon functions/server.js",
     "build": "netlify deploy --prod"
   },
   "author": "",
