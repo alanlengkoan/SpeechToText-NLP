@@ -1,10 +1,5 @@
 import express from "express";
-import dotEnv from "dotenv";
 import ServerlessHttp from "serverless-http";
-
-dotEnv.config({
-    path: "./.env"
-});
 
 const app = express();
 
@@ -14,4 +9,8 @@ app.get("/.netlify/functions/api", (req, res) => {
     });
 });
 
-export const handler = ServerlessHttp(app);
+const handler = ServerlessHttp(app);
+
+module.exports.handler = async (event, context) => {
+    return await handler(event, context);
+}
