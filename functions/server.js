@@ -31,6 +31,12 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.get("/.netlify/functions/index", (req, res) => {
+    res.json({
+        "message": "Hello World"
+    });
+});
+
 if (process.env.APP_STAGE === 'dev') {
     const port = process.env.PORT || 5000;
     const host = process.env.HOST || 'localhost';
@@ -41,9 +47,3 @@ if (process.env.APP_STAGE === 'dev') {
 } else {
     ServerlessHttp(app);
 }
-
-app.get("/", (req, res) => {
-    res.json({
-        "message": "Hello World"
-    });
-});
