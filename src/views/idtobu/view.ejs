@@ -8,11 +8,13 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
                         <label for="text" class="form-label">Text</label>
-                        <textarea class="form-control form-control-lg" rows="3" name="text" id="text" placeholder="Text"></textarea>
+                        <textarea class="form-control form-control-lg" rows="3" name="text" id="text"
+                            placeholder="Text"></textarea>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
                         <label for="terjamahan" class="form-label">Terjamahan</label>
-                        <textarea class="form-control form-control-lg" rows="3" name="terjamahan" id="terjamahan" placeholder="Terjamahan" readonly></textarea>
+                        <textarea class="form-control form-control-lg" rows="3" name="terjamahan" id="terjamahan"
+                            placeholder="Terjamahan" readonly></textarea>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-2 text-center">
                         <button class="btn btn-success" id="listen">
@@ -29,26 +31,42 @@
 </section>
 
 <script>
+    const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+
+    recognition.lang = 'id-ID';
+
+    recognition.onstart = function () {
+        console.log('Listening...');
+
+        $('#listen').html('Mendengarkan...');
+    }
+
+    recognition.onresult = function (event) {
+        const transcript = event.results[0][0].transcript;
+        $('#text').val(transcript);
+    }
+
+    recognition.onend = () => {
+        console.log('Stopped listening');
+
+        $('#listen').html('Dengarkan');
+
+        const text = $('#text').val();
+
+        detect(text);
+    };
+
     $(document).on('click', '#listen', function () {
-        var speech = true;
-        window.SpeechRecognition = window.webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        recognition.interimResults = true;
-        recognition.lang = 'id-ID';
-
-        recognition.addEventListener('result', (event) => {
-            const transcript = event.results[event.resultIndex][0].transcript;
-            $('#text').val(transcript);
-        });
-
-        if (speech) {
-            recognition.start();
-        }
-    })
+        recognition.start();
+    });
 
     $(document).on('click', '#translate', function () {
         const text = $('#text').val();
 
+        detect(text);
+    });
+
+    function detect(text) {
         $.ajax({
             url: '/detect',
             method: 'POST',
@@ -62,5 +80,5 @@
                 $('#terjamahan').val(res.fulfillmentText);
             }
         });
-    });
+    }
 </script>
