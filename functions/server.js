@@ -2,14 +2,11 @@ import express from "express";
 import ServerlessHttp from "serverless-http";
 
 const app = express();
+const router = express.Router();
 
-app.get("/", (req, res) => {
-    res.json({
-        "message": "Hello World"
-    });
-});
+app.use(router);
 
-app.get("/.netlify/functions/api", (req, res) => {
+router.get("/", (req, res) => {
     res.json({
         "message": "Hello World"
     });
