@@ -9,8 +9,6 @@ app.get("/.netlify/functions/api", (req, res) => {
     });
 });
 
-const handler = ServerlessHttp(app);
-
-module.exports.handler = async (event, context) => {
-    return await handler(event, context);
+export async function handler(event, context) {
+    return ServerlessHttp(app)(event, context);
 }
