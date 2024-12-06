@@ -32,7 +32,7 @@ app.use(express.urlencoded({
 }));
 
 app.get("/.netlify/functions/index", (req, res) => {
-    res.json({
+    return res.json({
         "message": "Hello World"
     });
 });
@@ -45,5 +45,9 @@ if (process.env.APP_STAGE === 'dev') {
         console.log(`Server is running on http://${host}:${port}`);
     });
 } else {
-    ServerlessHttp(app);
+    const server = ServerlessHttp(app);
+    
+    module.exports.handler = async (event, context) => {
+        return await server(event, context);
+    }
 }
