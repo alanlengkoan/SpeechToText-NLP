@@ -14,4 +14,4 @@ app.get("/.netlify/functions/api", (req, res) => {
     });
 });
 
-ServerlessHttp(app);
+export const handler = ServerlessHttp(app);
