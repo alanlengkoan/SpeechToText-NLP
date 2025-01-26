@@ -20,6 +20,7 @@ import {
 
 const router = Router();
 
+// untuk tampilkan halaman utama
 router.get("/", (req, res) => {
     var data = {
         halaman: 'Home',
@@ -29,6 +30,7 @@ router.get("/", (req, res) => {
     res.render('home/view', data);
 });
 
+// untuk import data voice ke firebase
 router.get("/import", (req, res) => {
     const jsonStringData = fs.readFileSync("./public/dataResource.json");
     let dataResource = JSON.parse(jsonStringData);
@@ -59,6 +61,7 @@ router.get("/import", (req, res) => {
     });
 });
 
+// untuk masuk kehalaman indonesia ke bugis
 router.get("/idtobu", async (req, res) => {
     var data = {
         halaman: 'Indonesia To Bugis',
@@ -68,6 +71,7 @@ router.get("/idtobu", async (req, res) => {
     res.render('idtobu/view', data);
 });
 
+// untuk masuk kehalaman bugis ke indonesia
 router.get("/butoid", async (req, res) => {
     const list = await voice();
 
@@ -80,6 +84,7 @@ router.get("/butoid", async (req, res) => {
     res.render('butoid/view', data);
 });
 
+// untuk mendeteksi bahasa
 router.post("/detect", async (req, res) => {
     try {
         var translate = [];
@@ -137,6 +142,7 @@ router.post("/detect", async (req, res) => {
     }
 });
 
+// untuk memberikan respon terjemahan
 router.post("/webhook", async (req, res) => {
     try {
         const data = req.body;
