@@ -1,24 +1,25 @@
 {
-  "name": "speech-to-text",
+  "name": "speechtotext-nlp",
   "version": "1.0.0",
-  "description": "learnn",
-  "main": "server.js",
-  "type": "module",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanlengkoan/SpeechToText-NLP.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanlengkoan/SpeechToText-NLP/issues"
+  },
+  "homepage": "https://github.com/alanlengkoan/SpeechToText-NLP#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dialogflow": "^1.2.0",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "express-ejs-layouts": "^2.5.1",
-    "firebase": "^11.0.2",
-    "fs": "^0.0.1-security",
-    "nodemon": "^3.1.7"
+    "@netlify/functions": "^3.0.0",
+    "@types/express": "^5.0.0",
+    "express": "^4.21.2",
+    "serverless-http": "^3.2.0"
   }
 }
