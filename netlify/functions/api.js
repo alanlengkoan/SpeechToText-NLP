@@ -1,20 +1,37 @@
 import express, {
     Router
 } from "express";
+import expressEjsLayouts from "express-ejs-layouts";
+import path from "path";
+import {
+    fileURLToPath
+} from "url";
 import serverless from 'serverless-http';
 
 const app = express();
 
+const __filename = fileURLToPath(
+    import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(expressEjsLayouts);
+
+app.set('view engine', 'ejs');
+
+app.set('views', path.join(__dirname, '/src/views'));
+
+app.set('layout extractScripts', true);
+
 const router = Router();
 
+// untuk tampilkan halaman utama
 router.get("/", (req, res) => {
-    res.send("hello world");
-});
+    var data = {
+        halaman: 'Home',
+        layout: 'base',
+    };
 
-router.get("/halo", (req, res) => {
-    res.json({
-        message: "hai world"
-    });
+    res.render('home/view', data);
 });
 
 app.use('/api/', router);

@@ -1,0 +1,84 @@
+<section class="container">
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center"><%= halaman %></h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
+                        <label for="text" class="form-label">Text</label>
+                        <textarea class="form-control form-control-lg" rows="3" name="text" id="text"
+                            placeholder="Text"></textarea>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
+                        <label for="terjamahan" class="form-label">Terjamahan</label>
+                        <textarea class="form-control form-control-lg" rows="3" name="terjamahan" id="terjamahan"
+                            placeholder="Terjamahan" readonly></textarea>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-2 text-center">
+                        <button class="btn btn-success" id="listen">
+                            Dengarkan
+                        </button>
+                        <button class="btn btn-primary" id="translate">
+                            Terjamahan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+
+    recognition.lang = 'id-ID';
+
+    recognition.onstart = function () {
+        console.log('Listening...');
+
+        $('#listen').html('Mendengarkan...');
+    }
+
+    recognition.onresult = function (event) {
+        const transcript = event.results[0][0].transcript;
+        $('#text').val(transcript);
+    }
+
+    recognition.onend = () => {
+        console.log('Stopped listening');
+
+        $('#listen').html('Dengarkan');
+
+        const text = $('#text').val();
+
+        detect(text);
+    };
+
+    $(document).on('click', '#listen', function () {
+        recognition.start();
+    });
+
+    $(document).on('click', '#translate', function () {
+        const text = $('#text').val();
+
+        detect(text);
+    });
+
+    function detect(text) {
+        $.ajax({
+            url: '/detect',
+            method: 'POST',
+            data: {
+                message: text
+            },
+            beforeSend: function () {
+                $('#terjamahan').val('');
+            },
+            success: function (res) {
+                $('#terjamahan').val(res.fulfillmentText);
+            }
+        });
+    }
+</script>
