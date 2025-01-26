@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 router.get("/halo", (req, res) => {
     res.json({
-        message: "hello world"
+        message: "hai world"
     });
 });
 
