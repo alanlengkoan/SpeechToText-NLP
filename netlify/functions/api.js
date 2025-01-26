@@ -8,9 +8,7 @@ const app = express();
 const router = Router();
 
 router.get("/", (req, res) => {
-    res.json({
-        message: "hello world"
-    });
+    res.send("hello world");
 });
 
 router.get("/halo", (req, res) => {
