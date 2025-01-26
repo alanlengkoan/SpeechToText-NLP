@@ -13,6 +13,12 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/halo", (req, res) => {
+    res.json({
+        message: "hello world"
+    });
+});
+
 app.use('/api/', router);
 
 export const handler = serverless(app);
