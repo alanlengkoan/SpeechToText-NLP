@@ -10,8 +10,7 @@ import serverless from 'serverless-http';
 
 const app = express();
 
-const __filename = fileURLToPath(
-    import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(expressEjsLayouts);
@@ -26,12 +25,7 @@ const router = Router();
 
 // untuk tampilkan halaman utama
 router.get("/", (req, res) => {
-    var data = {
-        halaman: 'Home',
-        layout: 'base',
-    };
-
-    res.render('home/view', data);
+    res.send(__dirname);
 });
 
 app.use('/api/', router);
