@@ -2,7 +2,7 @@ import express, {
     Router
 } from "express";
 import cors from "cors";
-import dialogflow from "@google-cloud/dialogflow";
+import dialogflow from "dialogflow";
 import {
     Voice
 } from "./models/voice.js";
