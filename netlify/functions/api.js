@@ -10,7 +10,6 @@ import {
     serverTimestamp
 } from "firebase/firestore";
 import dialogflow from "dialogflow";
-import fs from "fs";
 import cors from "cors";
 import {
     Voice
@@ -49,37 +48,6 @@ router.get("/voice", async (req, res) => {
         message: "success",
         data: voice
     }, 200);
-});
-
-// untuk import data voice ke firebase
-router.get("/import", (req, res) => {
-    const jsonStringData = fs.readFileSync("./uploads/dataResource.json");
-    let dataResource = JSON.parse(jsonStringData);
-    let no = 1;
-
-    dataResource.forEach(async (data) => {
-        const count = no++;
-        const tblVoice = collection(db, 'Voice');
-        const qryVoice = query(tblVoice);
-        const getVoice = await getDocs(qryVoice);
-
-        if (getVoice.empty) {
-            const addData = {
-                female: data.female,
-                male: data.male,
-                text: data.text,
-                created: serverTimestamp(),
-            }
-
-            addDoc(tblVoice, addData).then((res) => {
-                console.log('Voice berhasil ditambahkan => ' + res.id + ' No. ' + count);
-            });
-        }
-    });
-
-    res.status(200).send({
-        message: "Berhasil",
-    });
 });
 
 // untuk mendeteksi bahasa
