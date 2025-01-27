@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/alanlengkoan/SpeechToText-NLP#readme",
   "dependencies": {
+    "@google-cloud/dialogflow": "^6.14.0",
     "@netlify/functions": "^3.0.0",
     "@types/express": "^5.0.0",
     "cors": "^2.8.5",
