@@ -2,7 +2,6 @@ import express, {
     Router
 } from "express";
 import cors from "cors";
-import dialogflow from dialogflow;
 import {
     Voice
 } from "./models/voice.js";
@@ -18,6 +17,7 @@ import {
     db
 } from "./configs/firebase.js";
 import serverless from 'serverless-http';
+import { SessionsClient } from "@google-cloud/dialogflow";
 
 const app = express();
 
@@ -68,8 +68,8 @@ router.post("/detect", async (req, res) => {
             }
         };
 
-        const sessionClient = new dialogflow.SessionsClient(config);
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId);
+        const sessionClient = new SessionsClient(config);
+        const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
 
         const request = {
             session: sessionPath,
