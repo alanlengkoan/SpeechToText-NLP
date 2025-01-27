@@ -1,7 +1,6 @@
 import express, {
     Router
 } from "express";
-import expressEjsLayouts from "express-ejs-layouts";
 import path from "path";
 import serverless from 'serverless-http';
 
@@ -9,24 +8,11 @@ const app = express();
 
 const __dirname = path.resolve();
 
-app.use(expressEjsLayouts);
-
-app.set('view engine', 'ejs');
-
-app.set('views', path.join(__dirname, '/src/views'));
-
-app.set('layout extractScripts', true);
-
 const router = Router();
 
 // untuk tampilkan halaman utama
 router.get("/", (req, res) => {
-     var data = {
-        halaman: 'Home',
-        layout: 'base',
-    };
-
-    res.render('home/view', data);
+    res.render('halaman utama');
 });
 
 app.use('/api/', router);

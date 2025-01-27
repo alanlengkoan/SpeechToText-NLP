@@ -12,6 +12,3 @@
     command = "npm install"
     functions = "netlify/functions"
     publish = "public"
-
-[build.environment]
-    NODE_ENV = "development"
