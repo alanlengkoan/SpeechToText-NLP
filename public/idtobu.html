@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Speech To Text</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap4.css">
+
+</head>
+
+<body>
+    <!-- begin:: body -->
+    <section class="container">
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Indonesia To Bugis</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
+                            <label for="text" class="form-label">Text</label>
+                            <textarea class="form-control form-control-lg" rows="3" name="text" id="text"
+                                placeholder="Text"></textarea>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-2">
+                            <label for="terjamahan" class="form-label">Terjamahan</label>
+                            <textarea class="form-control form-control-lg" rows="3" name="terjamahan" id="terjamahan"
+                                placeholder="Terjamahan" readonly></textarea>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-2 text-center">
+                            <button class="btn btn-success" id="listen">
+                                Dengarkan
+                            </button>
+                            <button class="btn btn-primary" id="translate">
+                                Terjamahan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end:: body -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition || window
+            .mozSpeechRecognition || window.msSpeechRecognition)();
+
+        if (recognition) {
+            recognition.lang = 'id-ID';
+
+            recognition.onstart = function () {
+                console.log('Listening...');
+
+                $('#listen').html('Mendengarkan...');
+
+                $('#listen').prop('disabled', true);
+            }
+
+            recognition.onresult = function (event) {
+                const transcript = event.results[0][0].transcript;
+
+                $('#text').val(transcript);
+            }
+
+            // Menangani error
+            recognition.onerror = (event) => {
+                console.log("Terjadi kesalahan dalam pengenalan suara: ", event.error);
+
+                $('#listen').html('Dengarkan');
+
+                $('#listen').prop('disabled', false);
+            };
+
+            recognition.onend = () => {
+                console.log('Stopped listening');
+
+                $('#listen').html('Dengarkan');
+
+                $('#listen').prop('disabled', false);
+
+                const text = $('#text').val();
+
+                detect(text);
+            };
+
+            $(document).on('click', '#listen', function () {
+                recognition.start();
+            });
+
+            $(document).on('click', '#translate', function () {
+                const text = $('#text').val();
+
+                detect(text);
+            });
+        } else {
+            alert("Sorry, your browser does not support Speech Recognition.");
+        }
+
+        function detect(text) {
+            $.ajax({
+                url: 'https://kamusbugis.netlify.app/api/detect',
+                method: 'POST',
+                data: {
+                    message: text
+                },
+                beforeSend: function () {
+                    $('#terjamahan').val('');
+                },
+                success: function (res) {
+                    $('#terjamahan').val(res.fulfillmentText);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -8,15 +8,17 @@ import {
     orderBy
 } from "firebase/firestore";
 
-const voice = async () => {
+const Voice = async () => {
     const tblVoice = collection(db, "Voice");
     const qryVoice = query(tblVoice, orderBy("created", "asc"));
     const docVoice = await getDocs(qryVoice);
 
     const result = [];
+    let no = 1;
 
     docVoice.forEach((doc) => {
         result.push({
+            no: no++,
             id: doc.id,
             ...doc.data()
         });
@@ -26,5 +28,5 @@ const voice = async () => {
 };
 
 export {
-    voice
+    Voice
 }

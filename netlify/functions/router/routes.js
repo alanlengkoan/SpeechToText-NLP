@@ -1,8 +1,9 @@
-import fs from "fs";
-import dialogflow from "dialogflow";
 import {
     Router
 } from "express";
+import {
+    Voice
+} from "../models/voice.js";
 import {
     addDoc,
     collection,
@@ -12,25 +13,37 @@ import {
     serverTimestamp
 } from "firebase/firestore";
 import {
-    voice
-} from "./../models/voice.js";
-import {
     db
-} from "./../configs/firebase.js";
+} from "../configs/firebase.js";
+import {
+    SessionsClient
+} from "@google-cloud/dialogflow";
+import fs from "fs";
 
 const router = Router();
 
+// untuk tampilkan halaman utama
 router.get("/", (req, res) => {
-    var data = {
-        halaman: 'Home',
-        layout: 'base',
-    };
-
-    res.render('home/view', data);
+    res.json({
+        success: true,
+        message: "hello world"
+    }, 200);
 });
 
+// untuk mengambil data voice
+router.get("/voice", async (req, res) => {
+    const voice = await Voice();
+
+    res.json({
+        success: true,
+        message: "success",
+        data: voice
+    }, 200);
+});
+
+// untuk import data voice ke firebase
 router.get("/import", (req, res) => {
-    const jsonStringData = fs.readFileSync("./public/dataResource.json");
+    const jsonStringData = fs.readFileSync("./uploads/dataResource.json");
     let dataResource = JSON.parse(jsonStringData);
     let no = 1;
 
@@ -59,27 +72,7 @@ router.get("/import", (req, res) => {
     });
 });
 
-router.get("/idtobu", async (req, res) => {
-    var data = {
-        halaman: 'Indonesia To Bugis',
-        layout: 'base',
-    };
-
-    res.render('idtobu/view', data);
-});
-
-router.get("/butoid", async (req, res) => {
-    const list = await voice();
-
-    var data = {
-        halaman: 'Bugis To Indonesia',
-        layout: 'base',
-        list: list
-    };
-
-    res.render('butoid/view', data);
-});
-
+// untuk mendeteksi bahasa
 router.post("/detect", async (req, res) => {
     try {
         var translate = [];
@@ -97,8 +90,8 @@ router.post("/detect", async (req, res) => {
             }
         };
 
-        const sessionClient = new dialogflow.SessionsClient(config);
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId);
+        const sessionClient = new SessionsClient(config);
+        const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
 
         const request = {
             session: sessionPath,
@@ -137,6 +130,7 @@ router.post("/detect", async (req, res) => {
     }
 });
 
+// untuk memberikan respon terjemahan
 router.post("/webhook", async (req, res) => {
     try {
         const data = req.body;
