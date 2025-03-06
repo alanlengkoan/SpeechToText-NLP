@@ -22,11 +22,14 @@ tokenizer = T5Tokenizer.from_pretrained(model_name)
 
 # 🔹 Fungsi preprocessing untuk tokenisasi dataset
 def preprocess_function(examples):
+    inputs = examples["source"]
+    targets = examples["target"]
+
     model_inputs = tokenizer(
-        examples["source"], padding="max_length", truncation=True, max_length=128
+        inputs, padding="max_length", truncation=True, max_length=128
     )
     labels = tokenizer(
-        examples["target"], padding="max_length", truncation=True, max_length=128
+        targets, padding="max_length", truncation=True, max_length=128
     )
 
     model_inputs["labels"] = [
