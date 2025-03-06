@@ -1,41 +1,801 @@
 [{
         "audio": "1.wav",
-        "text": "alena mabbicara"
+        "text": "dia sedang berbicara"
     },
     {
         "audio": "2.wav",
-        "text": "taangkalingamui aga kupau"
+        "text": "kamu dengar apa yang saya katakan"
     },
     {
         "audio": "3.wav",
-        "text": "manre bale tunu"
+        "text": "makan ikan bakar"
     },
     {
         "audio": "4.wav",
-        "text": "aga kareba"
+        "text": "apa kabar"
     },
     {
         "audio": "5.wav",
-        "text": "pakessingiki batenu manre"
+        "text": "makan dengan baik"
     },
     {
         "audio": "6.wav",
-        "text": "siaganna idi talao"
+        "text": "kapan kamu pergi "
     },
     {
         "audio": "7.wav",
-        "text": "eloka iyya lao dijumpaddang"
+        "text": "saya mau pergi kemakassar"
     },
     {
         "audio": "8.wav",
-        "text": "talao baja dipasae"
+        "text": "besok kita pergi kepasar "
     },
     {
         "audio": "9.wav",
-        "text": "appikkiri decengki"
+        "text": "berpikir dengan baik"
     },
     {
         "audio": "10.wav",
-        "text": "digai mutaro"
+        "text": "dimana kamu simpan "
+    },
+    {
+        "audio": "11.wav",
+        "text": "tadi hujan"
+    },
+    {
+        "audio": "12.wav",
+        "text": "mari kita pergi bersama"
+    },
+    {
+        "audio": "13.wav",
+        "text": "dimana tujuanmu"
+    },
+    {
+        "audio": "14.wav",
+        "text": "saya akan pergi kesungai"
+    },
+    {
+        "audio": "15.wav",
+        "text": "itu yang terbaik"
+    },
+    {
+        "audio": "16.wav",
+        "text": "bicara bersama-sama"
+    },
+    {
+        "audio": "17.wav",
+        "text": "gadis itu pergi kesekolah"
+    },
+    {
+        "audio": "18.wav",
+        "text": "ibu tidur dirumah"
+    },
+    {
+        "audio": "19.wav",
+        "text": "duduk disini"
+    },
+    {
+        "audio": "20.wav",
+        "text": "pergi ketempat itu"
+    },
+    {
+        "audio": "21.wav",
+        "text": "dimana pintumu"
+    },
+    {
+        "audio": "22.wav",
+        "text": "kapan kamu pulang"
+    },
+    {
+        "audio": "23.wav",
+        "text": "diamlah sekarang"
+    },
+    {
+        "audio": "24.wav",
+        "text": "simpan didalam"
+    },
+    {
+        "audio": "25.wav",
+        "text": "sudah hujan didaerah itu "
+    },
+    {
+        "audio": "26.wav",
+        "text": "lihatlah dipasar"
+    },
+    {
+        "audio": "27.wav",
+        "text": "potong dengan pisau"
+    },
+    {
+        "audio": "28.wav",
+        "text": "tinggalkan ditempat"
+    },
+    {
+        "audio": "29.wav",
+        "text": "mereka sudah berangkat kemakassar"
+    },
+    {
+        "audio": "30.wav",
+        "text": "meraka akan pergi kehutan"
+    },
+    {
+        "audio": "31.wav",
+        "text": "besok kamu pulang kampung"
+    },
+    {
+        "audio": "32.wav",
+        "text": "mari kita bertemu"
+    },
+    {
+        "audio": "33.wav",
+        "text": "jangan khawatir"
+    },
+    {
+        "audio": "34.wav",
+        "text": "tidak ada yang lain "
+    },
+    {
+        "audio": "35.wav",
+        "text": "besok kita pergi kemakassar"
+    },
+    {
+        "audio": "36.wav",
+        "text": "menyebrang sungai"
+    },
+    {
+        "audio": "37.wav",
+        "text": "apa yang terjadi tadi"
+    },
+    {
+        "audio": "38.wav",
+        "text": "gadis itu datang dilorong "
+    },
+    {
+        "audio": "39.wav",
+        "text": "duduk bersama mengelilingi meja"
+    },
+    {
+        "audio": "40.wav",
+        "text": "rumah kamu luas sekali"
+    },
+    {
+        "audio": "41.wav",
+        "text": "masak air"
+    },
+    {
+        "audio": "42.wav",
+        "text": "nanti sore kita pergi "
+    },
+    {
+        "audio": "43.wav",
+        "text": "kapan kamu akan pulang"
+    },
+    {
+        "audio": "44.wav",
+        "text": "didalam rumah sangat sepi"
+    },
+    {
+        "audio": "45.wav",
+        "text": "ayahku pergi kesawah"
+    },
+    {
+        "audio": "46.wav",
+        "text": "berjalanlah ditengah jalan"
+    },
+    {
+        "audio": "47.wav",
+        "text": "ingatlah bahwa tidak ada yang sempurna "
+    },
+    {
+        "audio": "48.wav",
+        "text": "mereka sedang berbicara"
+    },
+    {
+        "audio": "49.wav",
+        "text": "besok saudara akan pergi ke kota"
+    },
+    {
+        "audio": "50.wav",
+        "text": "apa yang sudah kamu beli"
+    },
+    {
+        "audio": "51.wav",
+        "text": "tidak ada yang istimewa"
+    },
+    {
+        "audio": "52.wav",
+        "text": "mereka sedang berkumpul bersama "
+    },
+    {
+        "audio": "53.wav",
+        "text": "anak saya sangat cerdas "
+    },
+    {
+        "audio": "54.wav",
+        "text": "pergilah kedalam rumah "
+    },
+    {
+        "audio": "55.wav",
+        "text": "tidak ada yang lebih baik "
+    },
+    {
+        "audio": "56.wav",
+        "text": "dimana itu pisau"
+    },
+    {
+        "audio": "57.wav",
+        "text": "ayo kita pergi kekebun"
+    },
+    {
+        "audio": "58.wav",
+        "text": "sudah masak "
+    },
+    {
+        "audio": "59.wav",
+        "text": "duduk didepan "
+    },
+    {
+        "audio": "60.wav",
+        "text": "berangkatlah keluar"
+    },
+    {
+        "audio": "61.wav",
+        "text": "gadis itu datang "
+    },
+    {
+        "audio": "62.wav",
+        "text": "jangan dipikir"
+    },
+    {
+        "audio": "63.wav",
+        "text": "tidurlah"
+    },
+    {
+        "audio": "64.wav",
+        "text": "apakah kamu sudah makan"
+    },
+    {
+        "audio": "65.wav",
+        "text": "kapan kamu akan pergi "
+    },
+    {
+        "audio": "66.wav",
+        "text": "besok saudara kita akan menikah"
+    },
+    {
+        "audio": "67.wav",
+        "text": "pergilah kesawah "
+    },
+    {
+        "audio": "68.wav",
+        "text": "masuklah kedalam"
+    },
+    {
+        "audio": "69.wav",
+        "text": "jalan itu sangat baik"
+    },
+    {
+        "audio": "70.wav",
+        "text": "dimana sepatumu"
+    },
+    {
+        "audio": "71.wav",
+        "text": "pasar mana yang akan kamu datangi"
+    },
+    {
+        "audio": "72.wav",
+        "text": "masaklah didapur"
+    },
+    {
+        "audio": "73.wav",
+        "text": "hujan dijalan"
+    },
+    {
+        "audio": "74.wav",
+        "text": "siapa didepan"
+    },
+    {
+        "audio": "75.wav",
+        "text": "turulah keair"
+    },
+    {
+        "audio": "76.wav",
+        "text": "buatkan kopi"
+    },
+    {
+        "audio": "77.wav",
+        "text": "cuci bajumu"
+    },
+    {
+        "audio": "78.wav",
+        "text": "apa yang kamu beli dipasar"
+    },
+    {
+        "audio": "79.wav",
+        "text": "jalanlah ditepi"
+    },
+    {
+        "audio": "80.wav",
+        "text": "lewat mana"
+    },
+    {
+        "audio": "81.wav",
+        "text": "meyapulah"
+    },
+    {
+        "audio": "82.wav",
+        "text": "saya mau beli tempe"
+    },
+    {
+        "audio": "83.wav",
+        "text": "kamu mau makan apa"
+    },
+    {
+        "audio": "84.wav",
+        "text": "berikan dia"
+    },
+    {
+        "audio": "85.wav",
+        "text": "saya mau pergi kerja"
+    },
+    {
+        "audio": "86.wav",
+        "text": "apa pekerjaanmu"
+    },
+    {
+        "audio": "87.wav",
+        "text": "dengan siapa kamu tinggal"
+    },
+    {
+        "audio": "88.wav",
+        "text": "naik apa kamu kekampus"
+    },
+    {
+        "audio": "89.wav",
+        "text": "pinjam motormu"
+    },
+    {
+        "audio": "90.wav",
+        "text": "jalankan air itu"
+    },
+    {
+        "audio": "91.wav",
+        "text": "siapa yang punya"
+    },
+    {
+        "audio": "92.wav",
+        "text": "angkat meja itu"
+    },
+    {
+        "audio": "93.wav",
+        "text": "tidak ada apa-apa dirumah"
+    },
+    {
+        "audio": "94.wav",
+        "text": "pepaya itu sudah matang"
+    },
+    {
+        "audio": "95.wav",
+        "text": "bersihkan lantainya"
+    },
+    {
+        "audio": "96.wav",
+        "text": "kumpulkan disamping "
+    },
+    {
+        "audio": "97.wav",
+        "text": "dimana rumahmu"
+    },
+    {
+        "audio": "98.wav",
+        "text": "kapan pernikahannya"
+    },
+    {
+        "audio": "99.wav",
+        "text": "siapkan dibekang"
+    },
+    {
+        "audio": "100.wav",
+        "text": "ajari dia membaca"
+    },
+    {
+        "audio": "101.wav",
+        "text": "tulis nomornya"
+    },
+    {
+        "audio": "102.wav",
+        "text": "nilainya bagus"
+    },
+    {
+        "audio": "103.wav",
+        "text": "goreng pisang itu"
+    },
+    {
+        "audio": "104.wav",
+        "text": "tembang pohon itu"
+    },
+    {
+        "audio": "105.wav",
+        "text": "masak sayur itu"
+    },
+    {
+        "audio": "106.wav",
+        "text": "ambil jemuran"
+    },
+    {
+        "audio": "107.wav",
+        "text": "jahit baju pesta"
+    },
+    {
+        "audio": "108.wav",
+        "text": "dia pergi camping"
+    },
+    {
+        "audio": "109.wav",
+        "text": "saya ingin pergi keatas"
+    },
+    {
+        "audio": "110.wav",
+        "text": "dimana orang itu "
+    },
+    {
+        "audio": "111.wav",
+        "text": "pertama dipagi itu"
+    },
+    {
+        "audio": "112.wav",
+        "text": "simpan makanan itu diatas piring"
+    },
+    {
+        "audio": "113.wav",
+        "text": "sebarapa jauh kamu jalan"
+    },
+    {
+        "audio": "114.wav",
+        "text": "bekerjalah cepat"
+    },
+    {
+        "audio": "115.wav",
+        "text": "bawa kemesjid"
+    },
+    {
+        "audio": "116.wav",
+        "text": "dimana piring kamu simpan "
+    },
+    {
+        "audio": "117.wav",
+        "text": "kumpulkan diluar ruangan"
+    },
+    {
+        "audio": "118.wav",
+        "text": "buang sampah pada tempatnya"
+    },
+    {
+        "audio": "119.wav",
+        "text": "dilarang merokok"
+    },
+    {
+        "audio": "120.wav",
+        "text": "hati-hati menyebrang"
+    },
+    {
+        "audio": "121.wav",
+        "text": "liat kendaraan"
+    },
+    {
+        "audio": "122.wav",
+        "text": "awas jatuh"
+    },
+    {
+        "audio": "123.wav",
+        "text": "itu licin awas jatuh"
+    },
+    {
+        "audio": "124.wav",
+        "text": "apa yang kamu bawah"
+    },
+    {
+        "audio": "125.wav",
+        "text": "saya mau keluar"
+    },
+    {
+        "audio": "126.wav",
+        "text": "mari kita tunggu"
+    },
+    {
+        "audio": "127.wav",
+        "text": "jagalah dengan baik"
+    },
+    {
+        "audio": "128.wav",
+        "text": "anak itu menangis"
+    },
+    {
+        "audio": "129.wav",
+        "text": "ayun dengan kencang"
+    },
+    {
+        "audio": "130.wav",
+        "text": "gendong bayi itu"
+    },
+    {
+        "audio": "131.wav",
+        "text": "masuk dalam rumah"
+    },
+    {
+        "audio": "132.wav",
+        "text": "dia jatuh dari motor"
+    },
+    {
+        "audio": "133.wav",
+        "text": "dia ditabrak mobil"
+    },
+    {
+        "audio": "134.wav",
+        "text": "dia kecurian semalam"
+    },
+    {
+        "audio": "135.wav",
+        "text": "dimana sapu itu "
+    },
+    {
+        "audio": "136.wav",
+        "text": "kita kumpul dilapangan"
+    },
+    {
+        "audio": "137.wav",
+        "text": "dirikan bendera"
+    },
+    {
+        "audio": "138.wav",
+        "text": "kapan dia meninggal"
+    },
+    {
+        "audio": "139.wav",
+        "text": "masuk rumah sakit"
+    },
+    {
+        "audio": "140.wav",
+        "text": "siapa yang sakit"
+    },
+    {
+        "audio": "141.wav",
+        "text": "dia sakit demam"
+    },
+    {
+        "audio": "142.wav",
+        "text": "anak nakal"
+    },
+    {
+        "audio": "143.wav",
+        "text": "ditangkap polisi semalam"
+    },
+    {
+        "audio": "144.wav",
+        "text": "jaga harga dirimu dan hormati orang lain "
+    },
+    {
+        "audio": "145.wav",
+        "text": "kamu harus memaafkan"
+    },
+    {
+        "audio": "146.wav",
+        "text": "kemana perginya kucing "
+    },
+    {
+        "audio": "147.wav",
+        "text": "kita main bola disore ini"
+    },
+    {
+        "audio": "148.wav",
+        "text": "berlari mengelilingi lapangan"
+    },
+    {
+        "audio": "149.wav",
+        "text": "pungut sampah"
+    },
+    {
+        "audio": "150.wav",
+        "text": "bawah kemejaku"
+    },
+    {
+        "audio": "151.wav",
+        "text": "menaiki perahu"
+    },
+    {
+        "audio": "152.wav",
+        "text": "panjat itu mangga"
+    },
+    {
+        "audio": "153.wav",
+        "text": "ruangan gelap"
+    },
+    {
+        "audio": "154.wav",
+        "text": "nyalakan sentermu"
+    },
+    {
+        "audio": "155.wav",
+        "text": "ambilkan rumput"
+    },
+    {
+        "audio": "156.wav",
+        "text": "pungut daunnya"
+    },
+    {
+        "audio": "157.wav",
+        "text": "potong talinya"
+    },
+    {
+        "audio": "158.wav",
+        "text": "tutup ikanya"
+    },
+    {
+        "audio": "159.wav",
+        "text": "tankap ayam"
+    },
+    {
+        "audio": "160.wav",
+        "text": "itu rusak"
+    },
+    {
+        "audio": "161.wav",
+        "text": "ban motor kamu kempes"
+    },
+    {
+        "audio": "162.wav",
+        "text": "buatkan bubur"
+    },
+    {
+        "audio": "163.wav",
+        "text": "minta kunci mobilmu"
+    },
+    {
+        "audio": "164.wav",
+        "text": "gunting rumput"
+    },
+    {
+        "audio": "165.wav",
+        "text": "ada rencana lain"
+    },
+    {
+        "audio": "166.wav",
+        "text": "saya harus pergi kekantor"
+    },
+    {
+        "audio": "167.wav",
+        "text": "bagaimana cara menuju wisata itu "
+    },
+    {
+        "audio": "168.wav",
+        "text": "berapa banyak waktu yang tersisa"
+    },
+    {
+        "audio": "169.wav",
+        "text": "habisi cepat"
+    },
+    {
+        "audio": "170.wav",
+        "text": "apakah kamu bisa membantunya"
+    },
+    {
+        "audio": "171.wav",
+        "text": "bantu saya"
+    },
+    {
+        "audio": "172.wav",
+        "text": "permisi numpang lewat"
+    },
+    {
+        "audio": "173.wav",
+        "text": "saya tidak suka makanan ini"
+    },
+    {
+        "audio": "174.wav",
+        "text": "saya suka makan ayam goreng"
+    },
+    {
+        "audio": "175.wav",
+        "text": "tolong jangan berisik"
+    },
+    {
+        "audio": "176.wav",
+        "text": "saya datang pagi-pagi"
+    },
+    {
+        "audio": "177.wav",
+        "text": "apakah kamu datang kemarin"
+    },
+    {
+        "audio": "178.wav",
+        "text": "kapan kita mulai"
+    },
+    {
+        "audio": "179.wav",
+        "text": "apakah kamu tahu jawabannya"
+    },
+    {
+        "audio": "180.wav",
+        "text": "itu milik saya"
+    },
+    {
+        "audio": "181.wav",
+        "text": "tolong ajari saya membaca"
+    },
+    {
+        "audio": "182.wav",
+        "text": "saya pergi kesekolah"
+    },
+    {
+        "audio": "183.wav",
+        "text": "bagaimana keadaan cuaca besok"
+    },
+    {
+        "audio": "184.wav",
+        "text": "saya sudah berumur 25 tahun"
+    },
+    {
+        "audio": "185.wav",
+        "text": "berapa usia kamu"
+    },
+    {
+        "audio": "186.wav",
+        "text": "saya senang bertemu denganmu"
+    },
+    {
+        "audio": "187.wav",
+        "text": "apa yang kamu lakukan "
+    },
+    {
+        "audio": "188.wav",
+        "text": "saya mau beli ini"
+    },
+    {
+        "audio": "189.wav",
+        "text": "ini sangat enak"
+    },
+    {
+        "audio": "190.wav",
+        "text": "apa yang harus saya lakukan selanjutnya"
+    },
+    {
+        "audio": "191.wav",
+        "text": "saya harus pergi sekarang"
+    },
+    {
+        "audio": "192.wav",
+        "text": "tolong beri saya jawaban"
+    },
+    {
+        "audio": "193.wav",
+        "text": "saya tidak bisa datang hari ini"
+    },
+    {
+        "audio": "194.wav",
+        "text": "apakah kamu punya waktu hari ini"
+    },
+    {
+        "audio": "195.wav",
+        "text": "apakah ini bisa diperbaiki "
+    },
+    {
+        "audio": "196.wav",
+        "text": "jangan tinggalkan barang ini"
+    },
+    {
+        "audio": "197.wav",
+        "text": "saya merasa tidak enak badan"
+    },
+    {
+        "audio": "198.wav",
+        "text": "jangan lupa"
+    },
+    {
+        "audio": "199.wav",
+        "text": "tolong beri tahu saya jika ada masalah"
+    },
+    {
+        "audio": "200.wav",
+        "text": "saya ingin tidur"
     }
 ]
