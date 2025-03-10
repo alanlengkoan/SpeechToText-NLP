@@ -1,15 +1,11 @@
 
 from transformers import WhisperFeatureExtractor, WhisperTokenizer, WhisperProcessor, WhisperForConditionalGeneration
 from transformers import Seq2SeqTrainingArguments, Seq2SeqTrainer
-from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
 import torchaudio
 
 model = WhisperForConditionalGeneration.from_pretrained("./whisper-small-bugis")
 processor = WhisperProcessor.from_pretrained("./whisper-small-bugis")
-
-t5_model = T5ForConditionalGeneration.from_pretrained("./t5-bugis-indo")
-t5_tokenizer = T5Tokenizer.from_pretrained("./t5-bugis-indo")
 
 def transcribe_audio(audio_path):
     # Load audio
