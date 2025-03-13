@@ -7,9 +7,10 @@ from transformers import (
 )
 import torch
 import torchaudio
+import matplotlib.pyplot as plt
 
 # Load dataset
-dataset = load_dataset("json", data_files="bugis_dataset.json")["train"]
+dataset = load_dataset("json", data_files="dataset_audio_bugis.json")["train"]
 
 # Load model and processor
 model_name = "openai/whisper-small"
@@ -62,7 +63,7 @@ training_args = Seq2SeqTrainingArguments(
     warmup_steps=500,
     num_train_epochs=3,
     logging_dir="./logs",
-    logging_steps=10,
+    logging_steps=1,
     save_strategy="epoch",
     evaluation_strategy="epoch",  # Enable evaluation per epoch
     eval_steps=500,  # Evaluate every 500 steps
@@ -82,6 +83,22 @@ trainer = Seq2SeqTrainer(
 
 # Train model
 trainer.train()
+
+# Ambil history training
+logs = trainer.state.log_history
+
+# Ekstrak train loss dan validation loss
+train_losses = [log["loss"] for log in logs if "loss" in log]
+val_losses = [log["eval_loss"] for log in logs if "eval_loss" in log]
+
+# Plot Train Loss vs Validation Loss
+plt.plot(train_losses, label="Train Loss")
+plt.plot(val_losses, label="Validation Loss")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.title("Train Loss vs Validation Loss")
+plt.legend()
+plt.show()
 
 # Save model and processor
 model.save_pretrained("./whisper-small-bugis")
